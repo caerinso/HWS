@@ -1,5 +1,6 @@
 T = int(input())
 def BruteForce(p, t):
+
     i = 0 # t
     j = 0 # p
     n = 0
@@ -16,14 +17,13 @@ def BruteForce(p, t):
             n += 1
             j = 0
             continue
-
     if n == 0:
         return -1
     else:
         return n
 
-
 for case in range(1, 1+T):
+
     A, B = input().split()
     N = len(list(A))
     M = len(list(B))
