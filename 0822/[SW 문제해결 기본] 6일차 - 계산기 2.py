@@ -24,15 +24,13 @@ for tc in range(1, 1+10):
                 if s(lst[i]) > s(stack[top]):
                     top += 1
                     stack[top] = lst[i]
-                    c += 1
                     break
                 else:
                     cal.append(stack[top])
                     stack[top] = 0
                     top -= 1
-                    c -= 1
 
-    for k in range(c-1, -1, -1):
+    for k in range(top, -1, -1):
         cal += [stack[k]]
 
     top = -1
