@@ -1,6 +1,4 @@
 
-
-
 def enQueue(item):
     global rear
     rear = (rear + 1) % Qsize
