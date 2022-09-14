@@ -1,16 +1,18 @@
+
 w, h = map(int, input().split())
 p, q = map(int, input().split())
-T = int(input())
-t = 0
-di = [1, 1, -1, 1]                # 오
-dj = [1, -1, -1, -1]
-arr = [[0] * w for _ in range(h)]
+t = int(input())
 
+a = (p + t) // w
+b = (q + t) // h
 
-for i in range(4):
+if a % 2 == 0:
+    x = (p + t) % w
+else:
+    x = w - (p + t) % w
 
-    ni, nj = p + di[i],
-
-
-
-
+if b % 2 == 0:
+    y = (q + t) % h
+else:
+    y = h - (q + t) % h
+print(x, y)
