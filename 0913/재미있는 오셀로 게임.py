@@ -7,27 +7,37 @@ def change(stone):
     else:
         return 1
 
+
 def show(arr):
     for i in arr:
         print(*i)
 
 
-def oslo(i, j):
+def long(i, j):
+    print(f'색깔{stone}')
     for direct in range(8):
-        ri, rj = i + di[direct], j + dj[direct]
-        if not(0 <= ri < N and 0 <= rj < N):
-            continue
-        if arr[ri][rj] == change(stone):
-            r2i, r2j = ri + di[direct], rj + dj[direct]
-            if not (0 <= r2i < N and 0 <= r2j < N):
-                continue
-            if arr[r2i][r2j] == stone:
-                arr[r2i][r2j] = stone
-                arr[ri][rj] = stone
+        if oslo(i, j, direct):
+            print(lst)
+            for k in lst:
+                arr[k[0]][k[1]] = stone
                 color[stone] += 1
                 color[change(stone)] -= 1
-                print(show(arr))
 
+
+def oslo(i, j, direct):
+    global lst
+    print(f'색깔{stone}, {change(stone)}')
+    ri, rj = i + di[direct], j + dj[direct]
+    print(ri, rj)
+    if not(0 < ri < N and 0 < rj < N):
+        return 0
+    if arr[ri][rj] == change(stone):
+        lst.append([ri, rj])
+        oslo(ri, rj, direct)
+    elif arr[ri][rj] == 0:
+        return 0
+    elif arr[ri][rj] == stone:
+        return 1
 
 
 T = int(input())
@@ -42,6 +52,7 @@ for tc in range(1, 1+T):
     dj = [0, 0, 1, -1, 1, -1, 1, -1]
     color = [0, 2, 2]  # none,b,w
     print(show(arr))
+    lst = []
     for _ in range(M):
         print(_)
         j, i, stone = map(int, input().split())
@@ -49,7 +60,6 @@ for tc in range(1, 1+T):
         j -= 1
         arr[i][j] = stone
         color[stone] += 1
-        print(oslo(i, j))
+        print(long(i, j))
         print(show(arr))
-
     print(color)
