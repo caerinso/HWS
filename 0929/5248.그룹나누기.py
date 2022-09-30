@@ -1,4 +1,4 @@
-import sys; sys.stdin = open('5248.txt')
+import sys; sys.stdin = open('5248.txt', 'r')
 
 
 def find_set(x):
